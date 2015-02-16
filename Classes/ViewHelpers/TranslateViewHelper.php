@@ -30,7 +30,7 @@ if($GLOBALS['TYPO3_VERSION'] >= 6000000) {
 
 } else {
     // Class for TYPO3 version 4.5.x for backwards compatibility (deprecated, and will be removed when 6.2 becomes the new LTS)
-    class Tx_RoqNewsevent_ViewHelpers_TranslateViewHelper extends Tx_Fluid_ViewHelpers_TranslateViewHelper {
+    class Tx_RoqNewsevent_ViewHelpers_TranslateViewHelper extends \TYPO3\CMS\Fluid\ViewHelpers\TranslateViewHelper {
 
         /**
          * Translate a given key or use the tag body as default.

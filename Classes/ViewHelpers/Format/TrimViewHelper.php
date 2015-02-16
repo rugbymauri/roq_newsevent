@@ -8,7 +8,7 @@
  * @description:    ViewHelper to trim content with PHP trim function
  */
 
-class Tx_RoqNewsevent_ViewHelpers_Format_TrimViewHelper extends Tx_Fluid_Core_ViewHelper_AbstractViewHelper {
+class Tx_RoqNewsevent_ViewHelpers_Format_TrimViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper {
 
 	/**
      * @param boolean $replaceDoubleSpaces Flag which defines if double spaces must be replaced with single spaces

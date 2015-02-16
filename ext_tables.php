@@ -3,7 +3,7 @@ if (!defined('TYPO3_MODE')) {
 	die ('Access denied.');
 }
 
-t3lib_extMgm::addStaticFile($_EXTKEY, 'Configuration/TypoScript', 'News event');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile($_EXTKEY, 'Configuration/TypoScript', 'News event');
 
 $tmp_roq_newsevent_columns = array(
 
@@ -66,13 +66,13 @@ $tmp_roq_newsevent_columns = array(
 	),
 );
 
-t3lib_extMgm::addTCAcolumns('tx_news_domain_model_news', $tmp_roq_newsevent_columns);
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('tx_news_domain_model_news', $tmp_roq_newsevent_columns);
 
-t3lib_extMgm::addToAllTCAtypes(
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes(
     'tx_news_domain_model_news',
     ',--div--;LLL:EXT:roq_newsevent/Resources/Private/Language/locallang_db.xml:tx_roqnewsevent_domain_model_event,'
 );
-t3lib_extMgm::addToAllTCAtypes(
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes(
     'tx_news_domain_model_news',
     'tx_roqnewsevent_is_event, tx_roqnewsevent_startdate, tx_roqnewsevent_starttime, tx_roqnewsevent_enddate, tx_roqnewsevent_endtime, tx_roqnewsevent_location'
 );

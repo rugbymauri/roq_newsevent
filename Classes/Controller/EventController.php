@@ -42,12 +42,12 @@ class Tx_RoqNewsevent_Controller_EventController extends Tx_News_Controller_News
      * Overrides setViewConfiguration: Use event view configuration instead of news view configuration if an event
      * controller action is used
      *
-     * @param Tx_Extbase_MVC_View_ViewInterface $view
+     * @param \TYPO3\CMS\Fluid\View\TemplateView $view
      * @return void
      */
-    protected function setViewConfiguration(Tx_Extbase_MVC_View_ViewInterface $view) {
+    protected function setViewConfiguration(\TYPO3\CMS\Fluid\View\TemplateView $view) {
         $extbaseFrameworkConfiguration =
-            $this->configurationManager->getConfiguration(Tx_Extbase_Configuration_ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK);
+            $this->configurationManager->getConfiguration(\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK);
 
         // Fetch the current controller action which is set in the news plugin
         $controllerConfigurationAction = implode(';', $extbaseFrameworkConfiguration['controllerConfiguration']['News']['actions']);
@@ -68,29 +68,29 @@ class Tx_RoqNewsevent_Controller_EventController extends Tx_News_Controller_News
     /**
      * Override templateRootPath, layoutRootPath and/or partialRootPath of the news view with event specific settings
      *
-     * @param Tx_Extbase_MVC_View_ViewInterface $view
+     * @param \TYPO3\CMS\Fluid\View\TemplateView $view
      * @param array $extbaseFrameworkConfiguration
      * @return void
      */
-    protected function setEventViewConfiguration(Tx_Extbase_MVC_View_ViewInterface $view) {
+    protected function setEventViewConfiguration(\TYPO3\CMS\Fluid\View\TemplateView $view) {
         // Template Path Override
         $extbaseFrameworkConfiguration =
-            $this->configurationManager->getConfiguration(Tx_Extbase_Configuration_ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK);
+            $this->configurationManager->getConfiguration(\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK);
 
         if (isset($extbaseFrameworkConfiguration['view']['event']['templateRootPath'])
             && strlen($extbaseFrameworkConfiguration['view']['event']['templateRootPath']) > 0
             && method_exists($view, 'setTemplateRootPath')) {
-            $view->setTemplateRootPath(t3lib_div::getFileAbsFileName($extbaseFrameworkConfiguration['view']['event']['templateRootPath']));
+            $view->setTemplateRootPath(\TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($extbaseFrameworkConfiguration['view']['event']['templateRootPath']));
         }
         if (isset($extbaseFrameworkConfiguration['view']['event']['layoutRootPath'])
             && strlen($extbaseFrameworkConfiguration['view']['event']['layoutRootPath']) > 0
             && method_exists($view, 'setLayoutRootPath')) {
-            $view->setLayoutRootPath(t3lib_div::getFileAbsFileName($extbaseFrameworkConfiguration['view']['event']['layoutRootPath']));
+            $view->setLayoutRootPath(\TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($extbaseFrameworkConfiguration['view']['event']['layoutRootPath']));
         }
         if (isset($extbaseFrameworkConfiguration['view']['event']['partialRootPath'])
             && strlen($extbaseFrameworkConfiguration['view']['event']['partialRootPath']) > 0
             && method_exists($view, 'setPartialRootPath')) {
-            $view->setPartialRootPath(t3lib_div::getFileAbsFileName($extbaseFrameworkConfiguration['view']['event']['partialRootPath']));
+            $view->setPartialRootPath(\TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($extbaseFrameworkConfiguration['view']['event']['partialRootPath']));
         }
     }
 
